@@ -34,7 +34,10 @@ the configuration file below sets the browser to automatically download and run 
 i named the escape character files BMP because Elinks got confused with using VT file extensions.
 
 
-------- configuration
+------- configuration 11-29-2023
+
+
+
 ## ELinks 0.13.GIT configuration file
 
 ## This is ELinks configuration file. You can edit it manually,
@@ -83,29 +86,11 @@ i named the escape character files BMP because Elinks got confused with using VT
   set ui.language = "English"
 
 
-
-
-
-##############################
-# Automatically saved options
-#
-
-## terminal 
-#  Terminal options.
-
   ## terminal.xterm-color 
   #  Options specific to this terminal type (according to $TERM value).
 
     ## terminal.xterm-color.m11_hack [0|1]
     set terminal.xterm-color.m11_hack = 1
-
-
-
-
-
-##############################
-# Automatically saved options
-#
 
 ## terminal 
 #  Terminal options.
@@ -116,104 +101,27 @@ i named the escape character files BMP because Elinks got confused with using VT
     ## terminal.vt100.m11_hack [0|1]
     set terminal.vt100.m11_hack = 1
 
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## terminal 
-#  Terminal options.
-
-  ## terminal.xterm-color 
-  #  Options specific to this terminal type (according to $TERM value).
-
     ## terminal.xterm-color.type <num>
     set terminal.xterm-color.type = 1
 
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## terminal 
-#  Terminal options.
-
-  ## terminal.vt100 
-  #  Options specific to this terminal type (according to $TERM value).
 
     ## terminal.vt100.utf_8_io [0|1]
     set terminal.vt100.utf_8_io = 0
     ## terminal.vt100.type <num>
     set terminal.vt100.type = 2
 
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## terminal 
-#  Terminal options.
-
-  ## terminal.xterm-color 
-  #  Options specific to this terminal type (according to $TERM value).
-
     ## terminal.xterm-color.charset <codepage>
     set terminal.xterm-color.charset = "VISCII"
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## terminal 
-#  Terminal options.
-
-  ## terminal.vt100 
-  #  Options specific to this terminal type (according to $TERM value).
 
     ## terminal.vt100.charset <codepage>
     set terminal.vt100.charset = "utf-8"
     ## terminal.vt100.underline [0|1]
     set terminal.vt100.underline = 1
 
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## terminal 
-#  Terminal options.
-
-  ## terminal.xterm-color 
-  #  Options specific to this terminal type (according to $TERM value).
-
     ## terminal.xterm-color.italic [0|1]
     set terminal.xterm-color.italic = 1
     ## terminal.xterm-color.utf_8_io [0|1]
     set terminal.xterm-color.utf_8_io = 0
-
-
-
-
-
-##############################
-# Automatically saved options
-#
 
 ## mime 
 #  MIME-related options (handlers of various MIME types).
@@ -232,33 +140,33 @@ i named the escape character files BMP because Elinks got confused with using VT
     set mime.extension.bmp="image/bmp"
     set mime.extension.vt="image/vt"
 
-    set mime.extension.vt="image/vt"
+   
+    set mime.handler.image_viewer.unix.ask = 1
+    set mime.handler.image_viewer.unix-xwin.ask = 1
 
-    set mime.handler.image_viewer.unix.ask = 0
-    set mime.handler.image_viewer.unix-xwin.ask = 0
+    set mime.handler.image_viewer.unix.block = 1
+    set mime.handler.image_viewer.unix-xwin.block = 1
 
-    set mime.handler.image_viewer.unix.block = 0
-    set mime.handler.image_viewer.unix-xwin.block = 0
+    set mime.handler.image_viewer.unix.program = "fbi %"
+    set mime.handler.image_viewer.unix-xwin.program = "fbi %"
 
-    set mime.handler.image_viewer.unix.program = "cat %"
-    set mime.handler.image_viewer.unix-xwin.program = "cat %"
-    
-    
+    set mime.handler.text_viewer.unix.ask = 0
+    set mime.handler.text_viewer.unix-xwin.ask = 0
+
+    set mime.handler.text_viewer.unix.block = 0
+    set mime.handler.text_viewer.unix-xwin.block = 0
+
+    set mime.handler.text_viewer.unix.program = "dan %"
+    set mime.handler.text_viewer.unix-xwin.program = "dan %"
+   
     set mime.type.image.jpg = "image_viewer"
     set mime.type.image.jpeg = "image_viewer"
     set mime.type.image.png = "image_viewer"
     set mime.type.image.gif = "image_viewer"
-    set mime.type.image.bmp = "image_viewer"
-    set mime.type.image.vt = "image_viewer"
-    set mime.type.application.vt="image_viewer"
+    set mime.type.image.bmp = "text_viewer"
+    set mime.type.image.vt = "text_viewer"
+    #set mime.type.application.vt="text_viewer"
 
-
-##############################
-# Automatically saved options
-#
-
-## document 
-#  Document options.
 
   ## document.cache 
   #  Cache options.
@@ -280,46 +188,12 @@ i named the escape character files BMP because Elinks got confused with using VT
       #  cache size, but the HTML source of the formatted documents is always
       #  cached, even if it is over the memory cache size threshold. (Then of
       #  course no other documents can be cached.)
-      set document.cache.format.size = 0
-
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## document 
-#  Document options.
-
-  ## document.cache 
-  #  Cache options.
-
-    ## document.cache.memory 
-    #  Memory cache options.
+      set document.cache.format.size = 2
 
       ## document.cache.memory.size <num>
       #  Memory cache size (in bytes).
-      set document.cache.memory.size = 4k
+      set document.cache.memory.size = 8096
 
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## document 
-#  Document options.
-
-  ## document.cache 
-  #  Cache options.
 
     ## document.cache.revalidation_interval <num>
     #  Period in seconds that a cache entry is considered to be up-to-date. When
@@ -331,15 +205,6 @@ i named the escape character files BMP because Elinks got confused with using VT
     #  A value of -1 disables automatic revalidation.
     set document.cache.revalidation_interval = -1
 
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
 ## ui 
 #  User interface options.
 
@@ -348,32 +213,13 @@ i named the escape character files BMP because Elinks got confused with using VT
 
     ## ui.clock.enable [0|1]
     #  Whether to display a digital clock in the status bar.
-    set ui.clock.enable = 1
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## ui 
-#  User interface options.
+    set ui.clock.enable = 0
 
   ## ui.success_msgbox [0|1]
   #  When you pressed a [ Save ] button in some manager, this option will make
   #  sure that a box confirming success of the operation will pop up.
   set ui.success_msgbox = 0
 
-
-
-
-
-##############################
-# Automatically saved options
-#
 
 ## terminal 
 #  Terminal options.
@@ -384,16 +230,6 @@ i named the escape character files BMP because Elinks got confused with using VT
     ## terminal.vt100.italic [0|1]
     set terminal.vt100.italic = 1
 
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## document 
-#  Document options.
 
   ## document.download 
   #  Options regarding files downloading and handling.
@@ -425,177 +261,57 @@ i named the escape character files BMP because Elinks got confused with using VT
       #  Enable global history ("history of all pages visited").
       set document.history.global.enable = 1
 
+  ## document.cache 
+  #  Cache options.
+
+    ## document.cache.cache_redirects [0|1]
+    #  Cache even redirects sent by server (usually thru HTTP by a 302 HTTP code
+    #  and a Location header). This was the original behaviour for quite some
+    #  time, but it causes problems in a situation very common to various web
+    #  login systems - frequently, when accessing a certain location, they will
+    #  redirect you to a login page if they don't receive an auth cookie, the
+    #  login page then gives you the cookie and redirects you back to the
+    #  original page, but there you have already cached redirect back to the
+    #  login page! If this option has value of 0, this malfunction is fixed, but
+    #  occasionally you may get superfluous (depends on how you take it ;-)
+    #  requests to the server. If this option has value of 1, experienced users
+    #  can still workaround it by clever combination of usage of reload, jumping
+    #  around in session history and hitting ctrl+enter.
+    #  
+    #  Note that this option is checked when retrieving the information from
+    #  cache, not when saving it to cache - thus if you enable it, even previous
+    #  redirects will be taken from cache instead of asking the server.
+    set document.cache.cache_redirects = 0
+
+    ## document.cache.ignore_cache_control [0|1]
+    #  Ignore Cache-Control and Pragma server headers. When set, the document is
+    #  cached even with 'Cache-Control: no-cache'.
+    set document.cache.ignore_cache_control = 0
+
+
+## ui 
+#  User interface options.
+
+  ## ui.timer 
+  #  Timed action after certain interval of user inactivity. Someone can even
+  #  find this useful, although you may not believe that.
+
+    ## ui.timer.enable <num>
+    #  Whether to enable the timer or not:
+    #  0 is don't count down anything
+    #  1 is count down, but don't show the timer
+    #  2 is count down and show the timer near LEDs
+    set ui.timer.enable = 0
+
+
+  ## ui.window_title [0|1]
+  #  Set the window title when running in a windowing environment in an
+  #  xterm-like terminal. This way the document's title is shown on the window
+  #  titlebar.
+  set ui.window_title = 1
 
 
 
-
-
-
-##############################
-# Automatically saved options
-#
-
-## mime 
-#  MIME-related options (handlers of various MIME types).
-
-  ## mime.handler 
-  #  A file type handler is a set of information about how to use an external
-  #  program to view a file. It is possible to refer to it for several MIME
-  #  types -- e.g., you can define an 'image' handler to which
-  #  mime.type.image.png, mime.type.image.jpeg, and so on will refer; or one
-  #  might define a handler for a more specific type of file -- e.g., PDF files.
-  #  Note you must define both a MIME handler and a MIME type association for it
-  #  to work.
-
-    ## mime.handler.application 
-
-      ## mime.handler.application.unix 
-
-        ## mime.handler.application.unix.ask [0|1]
-        set mime.handler.application.unix.ask = 0
-        ## mime.handler.application.unix.block [0|1]
-        set mime.handler.application.unix.block = 0
-        ## mime.handler.application.unix.program <str>
-        set mime.handler.application.unix.program = "cat %"
-
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## mime 
-#  MIME-related options (handlers of various MIME types).
-
-  ## mime.type 
-  #  Handler <-> MIME type association. The first sub-tree is the MIME class
-  #  while the second sub-tree is the MIME type (ie. image/gif handler will
-  #  reside at mime.type.image.gif). Each MIME type option should contain
-  #  (case-sensitive) name of the MIME handler (its properties are stored at
-  #  mime.handler.<name>).
-
-    ## mime.type.image 
-
-      ## mime.type.image.vt <str>
-      set mime.type.image.vt = "image_viewer"
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## mime 
-#  MIME-related options (handlers of various MIME types).
-
-  ## mime.handler 
-  #  A file type handler is a set of information about how to use an external
-  #  program to view a file. It is possible to refer to it for several MIME
-  #  types -- e.g., you can define an 'image' handler to which
-  #  mime.type.image.png, mime.type.image.jpeg, and so on will refer; or one
-  #  might define a handler for a more specific type of file -- e.g., PDF files.
-  #  Note you must define both a MIME handler and a MIME type association for it
-  #  to work.
-
-    ## mime.handler.octet-stream 
-
-      ## mime.handler.octet-stream.unix 
-
-        ## mime.handler.octet-stream.unix.ask [0|1]
-        set mime.handler.octet-stream.unix.ask = 0
-        ## mime.handler.octet-stream.unix.block [0|1]
-        set mime.handler.octet-stream.unix.block = 0
-        ## mime.handler.octet-stream.unix.program <str>
-        set mime.handler.octet-stream.unix.program = "cat %"
-
-
-
-  ## mime.type 
-  #  Handler <-> MIME type association. The first sub-tree is the MIME class
-  #  while the second sub-tree is the MIME type (ie. image/gif handler will
-  #  reside at mime.type.image.gif). Each MIME type option should contain
-  #  (case-sensitive) name of the MIME handler (its properties are stored at
-  #  mime.handler.<name>).
-
-    ## mime.type.octet-stream 
-
-      ## mime.type.octet-stream.vt <str>
-      set mime.type.octet-stream.vt = "image_viewer"
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## mime 
-#  MIME-related options (handlers of various MIME types).
-
-  ## mime.default_type <str>
-  #  Document MIME-type to assume by default (when we are unable to guess it
-  #  properly from known information about the document).
-  set mime.default_type = "application/octet-stream"
-         ## mime.handler.default_type.unix.ask [0|1]
-        set mime.handler.default_type.unix.ask = 0
-        ## mime.handler.default_type.unix.block [0|1]
-        set mime.handler.default_type.unix.block = 0
-        ## mime.handler.default_type.unix.program <str>
-        set mime.handler.default_type.unix.program = "cat %"
-
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## mime 
-#  MIME-related options (handlers of various MIME types).
-
-  ## mime.extension 
-  #  Extension <-> MIME type association.
-
-    ## mime.extension.VT <str>
-    #  MIME-type matching this file extension ('*' is used here in place of
-    #  '.').
-    set mime.extension.VT = "image/VT"
-
-
-
-
-
-
-##############################
-# Automatically saved options
-#
-
-## mime 
-#  MIME-related options (handlers of various MIME types).
-
-  ## mime.type 
-  #  Handler <-> MIME type association. The first sub-tree is the MIME class
-  #  while the second sub-tree is the MIME type (ie. image/gif handler will
-  #  reside at mime.type.image.gif). Each MIME type option should contain
-  #  (case-sensitive) name of the MIME handler (its properties are stored at
-  #  mime.handler.<name>).
-
-    ## mime.type.image 
-
-      ## mime.type.image.VT <str>
-      set mime.type.image.VT = "image_viewer"
 
 
 
