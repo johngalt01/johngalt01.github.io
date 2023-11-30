@@ -156,8 +156,8 @@ i named the escape character files BMP because Elinks got confused with using VT
     set mime.handler.text_viewer.unix.block = 0
     set mime.handler.text_viewer.unix-xwin.block = 0
 
-    set mime.handler.text_viewer.unix.program = "dan %"
-    set mime.handler.text_viewer.unix-xwin.program = "dan %"
+    set mime.handler.text_viewer.unix.program = "cat %"
+    set mime.handler.text_viewer.unix-xwin.program = "cat %"
    
     set mime.type.image.jpg = "image_viewer"
     set mime.type.image.jpeg = "image_viewer"
