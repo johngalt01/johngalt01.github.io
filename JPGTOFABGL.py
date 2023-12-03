@@ -1,7 +1,7 @@
-# Ver 0.62 12/3/2023 
+# Ver 0.63 12/3/2023 
 # By John Galt Furball1985
 
-#from pathlib import path
+
 from PIL import Image
 import sys, termios, tty, os, time
  
@@ -35,11 +35,15 @@ extension = os.path.splitext(FILENAME)[1]
 #automatic resize
 
 image = Image.open(FILENAME)
-tempimage='temp'+ extension 
+tempimage='temp.png'
+
 image.thumbnail((int(arg6),int(arg6)))
-image.save(tempimage)
+
+imageout = image.convert("P",dither=Image.FLOYDSTEINBERG, palette=Image.WEB, colors=64)
+imageout.save(tempimage)
 
 im=Image.open(tempimage).convert('RGB')
+
 pix=im.load()
 w=im.size[0]
 h=im.size[1]
