@@ -1,6 +1,7 @@
-# Ver 0.5 12/1/2023 
+# Ver 0.62 12/3/2023 
 # By John Galt Furball1985
 
+#from pathlib import path
 from PIL import Image
 import sys, termios, tty, os, time
  
@@ -16,17 +17,29 @@ def getch():
     return ch
 
 
-# python JPGTOFABGL % A T 0 0
+# python JPGTOFABGL % A T 0 0 100
 
 arg1 = sys.argv[1] # filename
 arg2 = sys.argv[2] # Auto, Semi, Manual mode
 arg3 = sys.argv[3] # T transparency 'T' or not 'N'ot a 't'
 arg4 = sys.argv[4] # X
 arg5 = sys.argv[5] # Y
+arg6 = sys.argv[6] # resize limit 
+
 esc=chr(27)
 
 FILENAME=arg1 #image can be in gif jpeg or png format
-im=Image.open(FILENAME).convert('RGB')
+
+extension = os.path.splitext(FILENAME)[1]
+
+#automatic resize
+
+image = Image.open(FILENAME)
+tempimage='temp'+ extension 
+image.thumbnail((int(arg6),int(arg6)))
+image.save(tempimage)
+
+im=Image.open(tempimage).convert('RGB')
 pix=im.load()
 w=im.size[0]
 h=im.size[1]
@@ -71,12 +84,18 @@ if arg2=="S" or arg2=="s":
   exit(0)
 
  else:
-  exit(0)
+ # exit(0)
+  PS=512-YY
+  PS2=384-XX
+  PS=PS/2
+  PS2=PS2/2
+  offsetx=PS
+  offsety=PS2
 
 # Manual Mode
 if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt 
- offsetx=arg5
- offsety=arg4
+ offsetx=int(arg5)
+ offsety=int(arg4)
 
 #  OUTPUT TO FABGL TERMINAL IN COLOR
 if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 resolution
