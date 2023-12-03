@@ -34,9 +34,15 @@ the configuration file below sets the browser to automatically download and run 
 i named the escape character files BMP because Elinks got confused with using VT file extensions.
 
 
-------- configuration 11-29-2023
+python script settings can be edited from within ELINKS to customize how to display the image.
+
+Automatic mode "python jpgtofabgl % A N 0 0 100"
+
+works best, Semi Automatic mode tends to crash the ELINKS browser as it does not like an 
+external keypress to tell the script what to do.
 
 
+------- configuration 12-03-2023
 
 ## ELinks 0.13.GIT configuration file
 
@@ -141,14 +147,14 @@ i named the escape character files BMP because Elinks got confused with using VT
     set mime.extension.vt="image/vt"
 
    
-    set mime.handler.image_viewer.unix.ask = 1
-    set mime.handler.image_viewer.unix-xwin.ask = 1
+    set mime.handler.image_viewer.unix.ask = 0
+    set mime.handler.image_viewer.unix-xwin.ask = 0
 
-    set mime.handler.image_viewer.unix.block = 1
-    set mime.handler.image_viewer.unix-xwin.block = 1
+    set mime.handler.image_viewer.unix.block = 0
+    set mime.handler.image_viewer.unix-xwin.block = 0
 
-    set mime.handler.image_viewer.unix.program = "fbi %"
-    set mime.handler.image_viewer.unix-xwin.program = "fbi %"
+    set mime.handler.image_viewer.unix.program = "python jpgtofabgl % A N 0 0 100"
+    set mime.handler.image_viewer.unix-xwin.program = "python jpgtofabgl % A N 0 0 100"
 
     set mime.handler.text_viewer.unix.ask = 0
     set mime.handler.text_viewer.unix-xwin.ask = 0
@@ -192,7 +198,7 @@ i named the escape character files BMP because Elinks got confused with using VT
 
       ## document.cache.memory.size <num>
       #  Memory cache size (in bytes).
-      set document.cache.memory.size = 8096
+      set document.cache.memory.size = 1M
 
 
     ## document.cache.revalidation_interval <num>
@@ -309,6 +315,8 @@ i named the escape character files BMP because Elinks got confused with using VT
   #  xterm-like terminal. This way the document's title is shown on the window
   #  titlebar.
   set ui.window_title = 1
+
+
 
 
 
