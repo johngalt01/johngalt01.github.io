@@ -1,6 +1,6 @@
-# Ver 0.63 12/3/2023 
+# Ver 0.63.1 12/5/2023 
 # By John Galt Furball1985
-
+# Clean Up
 
 from PIL import Image
 import sys, termios, tty, os, time
@@ -28,11 +28,9 @@ arg6 = sys.argv[6] # resize limit
 
 esc=chr(27)
 
-FILENAME=arg1 #image can be in gif jpeg or png format
+FILENAME=arg1 # Image can be in Gif Jpeg or Png format
 
-extension = os.path.splitext(FILENAME)[1]
-
-#automatic resize
+# Automatic Resize and Dithering
 
 image = Image.open(FILENAME)
 tempimage='temp.png'
@@ -87,7 +85,7 @@ if arg2=="S" or arg2=="s":
  elif key=="Q" or key=="q" or key==chr(27):
   exit(0)
 
- else:
+ else: # Default to a center image if keypress is wrong
  # exit(0)
   PS=512-YY
   PS2=384-XX
