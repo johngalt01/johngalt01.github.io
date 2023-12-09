@@ -36,7 +36,7 @@ i named the escape character files BMP because Elinks got confused with using VT
 
 python script settings can be edited from within ELINKS to customize how to display the image.
 
-Automatic mode "python jpgtofabgl % A N 0 0 100"
+Automatic mode "python jpgtofabgl % A N 0 0 100 2"
 
 works best, Semi Automatic mode tends to crash the ELINKS browser as it does not like an 
 external keypress to tell the script what to do.
@@ -153,8 +153,8 @@ external keypress to tell the script what to do.
     set mime.handler.image_viewer.unix.block = 0
     set mime.handler.image_viewer.unix-xwin.block = 0
 
-    set mime.handler.image_viewer.unix.program = "python jpgtofabgl % A N 0 0 100"
-    set mime.handler.image_viewer.unix-xwin.program = "python jpgtofabgl % A N 0 0 100"
+    set mime.handler.image_viewer.unix.program = "python jpgtofabgl % A N 0 0 100 2"
+    set mime.handler.image_viewer.unix-xwin.program = "python jpgtofabgl % A N 0 0 100 2"
 
     set mime.handler.text_viewer.unix.ask = 0
     set mime.handler.text_viewer.unix-xwin.ask = 0
