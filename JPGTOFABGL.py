@@ -1,4 +1,4 @@
-# Ver 0.63.2 12/8/2023 
+# Ver 0.63.3 12/9/2023 
 # By John Galt Furball1985
 
 # added new arguement 7 which has 2 B&W picture modes and the Color mode
@@ -6,6 +6,7 @@
 # you can also compile this script to make it faster
 # python -m py_compile jpgtofabgl creates jpgtofabglc
 # make sure to change permissions to allow it to run : chmod +x jpgtofabglc
+# change to RGB to RGBA dealing with website transparency
 
 from PIL import Image
 import sys, termios, tty, os, time
@@ -48,17 +49,17 @@ image.thumbnail((int(arg6),int(arg6)))
 if arg7 == "0":
  imageout = image.convert("1",dither=Image.FLOYDSTEINBERG, palette=Image.WEB, colors=1)
  imageout.save(tempimage)
- im=Image.open(tempimage).convert('RGB')
+ im=Image.open(tempimage).convert('RGBA')
 
 elif arg7 == "1":
  imageout = image.convert("L",dither=Image.FLOYDSTEINBERG, palette=Image.WEB, colors=4)
  imageout.save(tempimage)
- im=Image.open(tempimage).convert('RGB') 
+ im=Image.open(tempimage).convert('RGBA') 
 
 else:
  imageout = image.convert("P",dither=Image.FLOYDSTEINBERG, palette=Image.WEB, colors=64)
  imageout.save(tempimage)
- im=Image.open(tempimage).convert('RGB')
+ im=Image.open(tempimage).convert('RGBA')
 
 pix=im.load()
 w=im.size[0]
