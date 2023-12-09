@@ -36,15 +36,15 @@ i named the escape character files BMP because Elinks got confused with using VT
 
 python script settings can be edited from within ELINKS to customize how to display the image.
 
-Automatic mode "python jpgtofabgl % A N 0 0 100 2"
+Automatic mode "python jpgtofabgl %f A N 0 0 100 2"
 
 works best, Semi Automatic mode tends to crash the ELINKS browser as it does not like an 
 external keypress to tell the script what to do.
 
 
-------- configuration 12-03-2023
+------- configuration 12-09-2023
 
-## ELinks 0.13.GIT configuration file
+## ELinks 0.17.GIT configuration file
 
 ## This is ELinks configuration file. You can edit it manually,
 ## if you wish so; this file is edited by ELinks when you save
@@ -153,8 +153,12 @@ external keypress to tell the script what to do.
     set mime.handler.image_viewer.unix.block = 0
     set mime.handler.image_viewer.unix-xwin.block = 0
 
-    set mime.handler.image_viewer.unix.program = "python jpgtofabgl % A N 0 0 100 2"
-    set mime.handler.image_viewer.unix-xwin.program = "python jpgtofabgl % A N 0 0 100 2"
+# if you compile 
+#   set mime.handler.image_viewer.unix.program = "jpgtofabglc %f A N 0 0 100 2"
+#   set mime.handler.image_viewer.unix-xwin.program = "jpgtofabglc %f A N 0 0 100 2"
+
+    set mime.handler.image_viewer.unix.program = "python jpgtofabgl %f A N 0 0 100 2"
+    set mime.handler.image_viewer.unix-xwin.program = "python jpgtofabgl %f A N 0 0 100 2"
 
     set mime.handler.text_viewer.unix.ask = 0
     set mime.handler.text_viewer.unix-xwin.ask = 0
@@ -162,8 +166,8 @@ external keypress to tell the script what to do.
     set mime.handler.text_viewer.unix.block = 0
     set mime.handler.text_viewer.unix-xwin.block = 0
 
-    set mime.handler.text_viewer.unix.program = "cat %"
-    set mime.handler.text_viewer.unix-xwin.program = "cat %"
+    set mime.handler.text_viewer.unix.program = "cat %f"
+    set mime.handler.text_viewer.unix-xwin.program = "cat %f"
    
     set mime.type.image.jpg = "image_viewer"
     set mime.type.image.jpeg = "image_viewer"
