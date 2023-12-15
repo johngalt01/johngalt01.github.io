@@ -1,4 +1,4 @@
-# Ver 0.64 12/13/2023 
+# Ver 0.64.1 12/14/2023 
 # By John Galt Furball1985
 
 # added new arguement 7 which has 2 B&W picture modes and the Color mode
@@ -107,16 +107,20 @@ if arg2=="S" or arg2=="s":
   offsety=PS2
 
  elif key=="Q" or key=="q" or key==chr(27):
-  exit(0)
-
- else:
- # exit(0)
-  PS=512-YY
-  PS2=384-XX
-  PS=PS/2
-  PS2=PS2/2
-  offsetx=PS
-  offsety=PS2
+  im.close()
+  image.close()
+  sys.exit()
+  
+ else: #just exit out if you push wrong button
+  im.close()
+  image.close()
+  sys.exit()
+  # PS=512-YY
+  # PS2=384-XX
+  # PS=PS/2
+  # PS2=PS2/2
+  # offsetx=PS
+  # offsety=PS2
 
 # Manual Mode
 if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt 
