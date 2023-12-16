@@ -1,5 +1,7 @@
-# Ver 0.64.2 12/15/2023 
+# Ver 0.64.3 12/16/2023 
 # By John Galt Furball1985
+
+# Change to Python 3
 
 # added new arguement 7 which has 2 B&W picture modes and the Color mode
 
@@ -12,26 +14,14 @@
 
 # added terminal blocking mode
 
-# python JPGTOFABGL % A T 0 0 100 2 0: set Auto mode, Transparent pictures, x(not used), y(not used), width 100 pixels, color mode
-# jpgtofabglc % M N 25 75 50 0 0: set Manual mode, solid picture, x=25, y=75, width 50 pixels, 1 bit b&w mode
+# python JPGTOFABGL %f A T 0 0 100 2 0: set Auto mode, Transparent pictures, x(not used), y(not used), width 100 pixels, color mode
+# jpgtofabglc %f M N 25 75 50 0 0: set Manual mode, solid picture, x=25, y=75, width 50 pixels, 1 bit b&w mode
 
 
 from PIL import Image
-import sys, termios, tty, os, time
+import sys, termios, tty, os, time, getch
  
-def getch():
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(sys.stdin.fileno())
-        ch = sys.stdin.read(1)
- 
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
-
-
-# python JPGTOFABGL % A T 0 0 100
+# python JPGTOFABGL %f A T 0 0 100 2 0
 
 arg1 = sys.argv[1] # filename
 arg2 = sys.argv[2] # Auto, Semi, Manual mode
@@ -43,6 +33,9 @@ arg7 = sys.argv[7] # 0 black and white, 1 black and white 4 levels, 2 color
 arg8 = sys.argv[8] # block terminal elinks yes or no 1 or 0
 
 esc=chr(27)
+
+if arg8 == "1": # we are blocking terminal so clear screen
+ print (esc+"[2J")
 
 FILENAME=arg1 #image can be in gif jpeg or png format
 
@@ -129,8 +122,8 @@ if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt
  offsetx=int(arg5)
  offsety=int(arg4)
 
-if arg8 == "1": # we are blocking terminal so clear screen
- print (esc+"[2J")
+#if arg8 == "1": # we are blocking terminal so clear screen
+# print (esc+"[2J")
 
 #  OUTPUT TO FABGL TERMINAL IN COLOR
 if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 resolution
@@ -140,7 +133,7 @@ if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 reso
        if arg3=="T" or arg3=="t":
         # IMAGE IS TRANSPARENT 
 
-        if pix[i,j][0]<>0 and pix[i,j][1]<>0 and pix[i,j][2]<>0:
+        if pix[i,j][0]!=0 and pix[i,j][1]!=0 and pix[i,j][2]!=0:
          print(esc+"[H")
          print(esc+"_GPEN"+str(pix[i,j][0])+";"+str(pix[i,j][1])+";"+str(pix[i,j][2]))	
          print(esc+"_GPIXEL"+str(i+offsetx)+";"+str(j+offsety))
