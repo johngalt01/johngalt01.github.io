@@ -1,4 +1,4 @@
-# Ver 0.64.1 12/14/2023 
+# Ver 0.64.2 12/15/2023 
 # By John Galt Furball1985
 
 # added new arguement 7 which has 2 B&W picture modes and the Color mode
@@ -10,8 +10,10 @@
 
 # Fixed Cleanup and exit
 
-# python JPGTOFABGL % A T 0 0 100 2: set Auto mode, Transparent pictures, x(not used), y(not used), width 100 pixels, color mode
-# jpgtofabglc % M N 25 75 50 0: set Manual mode, solid picture, x=25, y=75, width 50 pixels, 1 bit b&w mode
+# added terminal blocking mode
+
+# python JPGTOFABGL % A T 0 0 100 2 0: set Auto mode, Transparent pictures, x(not used), y(not used), width 100 pixels, color mode
+# jpgtofabglc % M N 25 75 50 0 0: set Manual mode, solid picture, x=25, y=75, width 50 pixels, 1 bit b&w mode
 
 
 from PIL import Image
@@ -38,7 +40,7 @@ arg4 = sys.argv[4] # X
 arg5 = sys.argv[5] # Y
 arg6 = sys.argv[6] # resize limit 
 arg7 = sys.argv[7] # 0 black and white, 1 black and white 4 levels, 2 color
-
+arg8 = sys.argv[8] # block terminal elinks yes or no 1 or 0
 
 esc=chr(27)
 
@@ -127,6 +129,9 @@ if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt
  offsetx=int(arg5)
  offsety=int(arg4)
 
+if arg8 == "1": # we are blocking terminal so clear screen
+ print (esc+"[2J")
+
 #  OUTPUT TO FABGL TERMINAL IN COLOR
 if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 resolution
  for i in range(w):
@@ -149,6 +154,13 @@ if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 reso
 
 print (esc+"_F0;15")
 print (esc+"_GPEN255;255;255")
+
+if arg8 == "1": # halt for keypress here and i need LINES and COLUMNS
+ LINES1=int(os.environ["LINES"])
+ COLUMNS1=int(os.environ["COLUMNS"])
+ LINES1=LINES1-1
+ COLUMNS1=(COLUMNS1/2)-11
+ raw_input(esc+"["+str(LINES1)+";"+str(COLUMNS1)+"fPress Enter to Return.")
 
 im.close()
 image.close()
