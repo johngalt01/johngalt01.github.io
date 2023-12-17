@@ -1,4 +1,4 @@
-# Ver 0.64.3 12/16/2023 
+# Ver 0.64.4 12/16/2023 
 # By John Galt Furball1985
 
 # Change to Python 3
@@ -14,17 +14,15 @@
 
 # added terminal blocking mode
 
-# python JPGTOFABGL %f A T 0 0 100 2 0: set Auto mode, Transparent pictures, x(not used), y(not used), width 100 pixels, color mode
+# python3 JPGTOFABGL %f A T 0 0 100 2 0: set Auto mode, Transparent pictures, x(not used), y(not used), width 100 pixels, color mode
 # jpgtofabglc %f M N 25 75 50 0 0: set Manual mode, solid picture, x=25, y=75, width 50 pixels, 1 bit b&w mode
 
 
 from PIL import Image
 import sys, termios, tty, os, time, getch
- 
-# python JPGTOFABGL %f A T 0 0 100 2 0
 
 arg1 = sys.argv[1] # filename
-arg2 = sys.argv[2] # Auto, Semi, Manual mode
+arg2 = sys.argv[2] # Auto, Semi, Manual mode Don't use Semi when using Elinks.
 arg3 = sys.argv[3] # T transparency 'T' or not 'N'ot a 't'
 arg4 = sys.argv[4] # X
 arg5 = sys.argv[5] # Y
@@ -78,8 +76,12 @@ if arg2=="A" or arg2=="a":
 
 
 # Semi-Automatic mode user positions possible center,left,right,middle
-if arg2=="S" or arg2=="s": 
- key = getch()
+if arg2=="S" or arg2=="s":
+ 
+ while True: 
+  key = getch()
+  if key=="L" or key=="l" or key=="R" or key=="r" or key=="M" or key=="m" or key=="C" or key=="c" or key=="Q" or key=="q":
+   break
 
  if key=="L" or key=="l": #image left-top
   offsetx=128-(YY/2)
@@ -110,12 +112,6 @@ if arg2=="S" or arg2=="s":
   im.close()
   image.close()
   sys.exit()
-  # PS=512-YY
-  # PS2=384-XX
-  # PS=PS/2
-  # PS2=PS2/2
-  # offsetx=PS
-  # offsety=PS2
 
 # Manual Mode
 if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt 
