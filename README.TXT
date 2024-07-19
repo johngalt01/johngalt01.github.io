@@ -5,6 +5,10 @@ You will have to setup one of the browsers above, I recommend ELINKS, on a Raspb
 
 set terminal to max resolution 512x384,64 colors
 
+
+![screenshot](DSCN5986.JPG)
+
+
 set your telnet terminal 
 LINES to 45-48
 and 
