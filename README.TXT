@@ -1,6 +1,8 @@
 This project is ment to work with THE LINKS,LINKS2,ELINKS Text browser,
 In conjuction with the FABGL VGA32 ANSI Color Terminal.
 
+https://github.com/johngalt01/johngalt01.github.io/blob/main/DSCN5986.JPG
+
 You will have to setup one of the browsers above, I recommend ELINKS, on a Raspberry PI.
 
 set terminal to max resolution 512x384,64 colors
