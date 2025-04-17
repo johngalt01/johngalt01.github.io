@@ -61,7 +61,7 @@ external keypress to tell the script what to do.
 ##
 ## Obviously, if you don't like what ELinks is going to do with
 ## this file, you can change it by altering the config.saving_style
-## option. Come on, aren't we friendly guys after all?
+## option.
 
 
 
