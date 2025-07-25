@@ -120,7 +120,7 @@ if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt
 
 #if arg8 == "1": # we are blocking terminal so clear screen
 # print (esc+"[2J")
-
+print (esc+"_E0")
 #  OUTPUT TO FABGL TERMINAL IN COLOR
 if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 resolution
  for i in range(w):
@@ -140,7 +140,7 @@ if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 reso
         print(esc+"_GPEN"+str(pix[i,j][0])+";"+str(pix[i,j][1])+";"+str(pix[i,j][2]))	
         print(esc+"_GPIXEL"+str(i+offsetx)+";"+str(j+offsety))
       
-
+print (esc+"_E1")
 print (esc+"_F0;15")
 print (esc+"_GPEN255;255;255")
 
