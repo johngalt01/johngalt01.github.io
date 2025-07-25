@@ -141,7 +141,7 @@ if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 reso
         print(esc+"_GPIXEL"+str(i+offsetx)+";"+str(j+offsety))
       
 print (esc+"_E1")
-print (esc+"_F0;15")
+print (esc+"_F0;46")
 print (esc+"_GPEN255;255;255")
 
 if arg8 == "1": # halt for keypress here and i need LINES and COLUMNS
