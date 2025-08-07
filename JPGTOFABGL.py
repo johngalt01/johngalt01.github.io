@@ -1,4 +1,4 @@
-# Ver 0.64.5 07/24/2025 
+# Ver 0.64.6 08/06/2025  
 # By John Galt Furball1985
 
 # Change to Python 3
@@ -120,6 +120,7 @@ if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt
 
 #if arg8 == "1": # we are blocking terminal so clear screen
 # print (esc+"[2J")
+print (esc+"[H")
 print (esc+"_E0")
 #  OUTPUT TO FABGL TERMINAL IN COLOR
 if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 resolution
