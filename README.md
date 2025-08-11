@@ -1,3 +1,8 @@
+Coming soon a more organized main website hosted on GITHUB explaining what and how this repository works:
+
+main page:
+https://johngalt01.github.io/
+
 
 ![IMG_0553](https://github.com/user-attachments/assets/45e866a8-92a6-4d58-9040-7920d4e22e82)
 
