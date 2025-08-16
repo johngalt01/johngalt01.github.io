@@ -1,7 +1,12 @@
-# Ver 0.64.6 08/06/2025  
+
+# Ver 0.65 08/15/2025  
 # By John Galt Furball1985
 
 # Change to Python 3
+
+# removed the use of GETCH because its problematic for python.
+
+# adds a window around picture to be displayed which clears the area of the screen and also displays a outline.
 
 # added new arguement 7 which has 2 B&W picture modes and the Color mode
 
@@ -19,7 +24,9 @@
 
 
 from PIL import Image
-import sys, termios, tty, os, time, getch
+
+#import sys, termios, tty, os, time, getch
+import sys, termios, tty, os, time
 
 arg1 = sys.argv[1] # filename
 arg2 = sys.argv[2] # Auto, Semi, Manual mode Don't use Semi when using Elinks.
@@ -76,42 +83,42 @@ if arg2=="A" or arg2=="a":
 
 
 # Semi-Automatic mode user positions possible center,left,right,middle
-if arg2=="S" or arg2=="s":
+#if arg2=="S" or arg2=="s":
  
- while True: 
-  key = getch()
-  if key=="L" or key=="l" or key=="R" or key=="r" or key=="M" or key=="m" or key=="C" or key=="c" or key=="Q" or key=="q":
-   break
+# while True: 
+#  key = getch()
+#  if key=="L" or key=="l" or key=="R" or key=="r" or key=="M" or key=="m" or key=="C" or key=="c" or key=="Q" or key=="q":
+#   break
 
- if key=="L" or key=="l": #image left-top
-  offsetx=128-(YY/2)
-  offsety=40
+# if key=="L" or key=="l": #image left-top
+#  offsetx=128-(YY/2)
+#  offsety=40
 
- elif key=="R" or key=="r": #image right-top
-  offsetx=384-(YY/2)
-  offsety=40
+# elif key=="R" or key=="r": #image right-top
+#  offsetx=384-(YY/2)
+#  offsety=40
 
- elif key=="M" or key=="m": #image middle-top
-  offsetx=256-(YY/2)
-  offsety=40
+# elif key=="M" or key=="m": #image middle-top
+#  offsetx=256-(YY/2)
+#  offsety=40
 
- elif key=="C" or key=="c": #image centered on screen
-  PS=512-YY
-  PS2=384-XX
-  PS=PS/2
-  PS2=PS2/2
-  offsetx=PS
-  offsety=PS2
+# elif key=="C" or key=="c": #image centered on screen
+#  PS=512-YY
+#  PS2=384-XX
+# PS=PS/2
+#  PS2=PS2/2
+#  offsetx=PS
+#  offsety=PS2
 
- elif key=="Q" or key=="q" or key==chr(27):
-  im.close()
-  image.close()
-  sys.exit()
+# elif key=="Q" or key=="q" or key==chr(27):
+#  im.close()
+#  image.close()
+#  sys.exit()
   
- else: #just exit out if you push wrong button
-  im.close()
-  image.close()
-  sys.exit()
+# else: #just exit out if you push wrong button
+#  im.close()
+#  image.close()
+#  sys.exit()
 
 # Manual Mode
 if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt 
@@ -122,7 +129,17 @@ if arg2=="M" or arg2=="m": # Honor user X,Y from Command prompt
 # print (esc+"[2J")
 print (esc+"[H")
 print (esc+"_E0")
+
+# draw a retangle to the size of the image to clear the screen area.
+
+print(esc+"_GBRUSH0;0;0") # color black
+print(esc+"_GFILLRECT"+str(offsetx)+";"+str(offsety)+";"+str(w+offsetx-1)+";"+str(h+offsety-1))   # blanking rectangle
+print(esc+"_GPEN255;255;255")
+print(esc+"_GRECT"+str(offsetx)+";"+str(offsety)+";"+str(w+offsetx-1)+";"+str(h+offsety-1))
+
+
 #  OUTPUT TO FABGL TERMINAL IN COLOR
+
 if w<=500 and h<=350: # Range check to make sure we don't go nuts 500 x 350 resolution
  for i in range(w):
     for j in range(h):
@@ -155,4 +172,5 @@ if arg8 == "1": # halt for keypress here and i need LINES and COLUMNS
 im.close()
 image.close()
 sys.exit()
+
 
