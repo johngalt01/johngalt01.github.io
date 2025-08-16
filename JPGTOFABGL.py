@@ -1,4 +1,3 @@
-
 # Ver 0.65 08/15/2025  
 # By John Galt Furball1985
 
@@ -131,9 +130,10 @@ print (esc+"[H")
 print (esc+"_E0")
 
 # draw a retangle to the size of the image to clear the screen area.
-
+print(esc+"[H")
 print(esc+"_GBRUSH0;0;0") # color black
 print(esc+"_GFILLRECT"+str(offsetx)+";"+str(offsety)+";"+str(w+offsetx-1)+";"+str(h+offsety-1))   # blanking rectangle
+print(esc+"[H")
 print(esc+"_GPEN255;255;255")
 print(esc+"_GRECT"+str(offsetx)+";"+str(offsety)+";"+str(w+offsetx-1)+";"+str(h+offsety-1))
 
