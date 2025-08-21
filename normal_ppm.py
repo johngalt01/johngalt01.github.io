@@ -18,9 +18,9 @@ outfile = open(filenameout, 'w')
 #setup the first 4 lines.
 dot=1
 
-the_return="\n"
+the_return="\r\n"
 
-the_header="# Created by GIMP version 2.10.38 PNM plug-in\n"
+the_header="# Created by GIMP version 2.10.38 PNM plug-in\r\n"
 
 while 1:
 
