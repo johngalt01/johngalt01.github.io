@@ -50,7 +50,7 @@ Automatic mode "python jpgtofabgl %f A N 0 0 100 2"
 
 works best, Semi Automatic mode tends to crash the ELINKS browser as it does not like an 
 external keypress to tell the script what to do.
-
+<pre>
 
 ------- configuration 12-09-2023
 
@@ -330,7 +330,7 @@ external keypress to tell the script what to do.
   #  titlebar.
   set ui.window_title = 1
 
-
+    </pre>
 
 
 
