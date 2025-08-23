@@ -15,6 +15,8 @@ You will have to setup one of the browsers above, I recommend ELINKS, on a Raspb
 
 set terminal to max resolution 512x384,64 colors
 
+the main script to use is: JPGTOFABGL.py for outputing jpg to the fabgl terminal.
+
 set your telnet terminal 
 LINES to 45-48
 and 
