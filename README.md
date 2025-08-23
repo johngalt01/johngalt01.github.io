@@ -74,7 +74,7 @@ example usage:
 
 only use in transperency mode T this is due to how the pixels can be turned on or off with the GEOFF terminal. always blank the terminal with the trailing 1 and you can only use B&W bitmap mode.
 
-here is the cat.jpf image displayed on the GEOFF Terminal
+here is the cat.jpg image displayed on the GEOFF Terminal
 
 ![DSCN6428](https://github.com/user-attachments/assets/bb4314d4-1cb9-42dd-8ba8-93d04c0b014c)
 
