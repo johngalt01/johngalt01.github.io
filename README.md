@@ -80,3 +80,9 @@ here is the cat.jpg image displayed on the GEOFF Terminal
 
 ![DSCN6428](https://github.com/user-attachments/assets/bb4314d4-1cb9-42dd-8ba8-93d04c0b014c)
 
+<hr>
+added a bash script:
+altair_ppm_convert.sh
+
+this automates the image you want to display into a PPM image that works with my PPMVIEW program.
+so you can download the converted ppm image from the script then view it and print it out later on a Cp/M machine with the FABGL ANSI terminal
