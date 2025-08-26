@@ -86,3 +86,8 @@ altair_ppm_convert.sh
 
 this automates the image you want to display into a PPM image that works with my PPMVIEW program.
 so you can download the converted ppm image from the script then view it and print it out later on a Cp/M machine with the FABGL ANSI terminal
+
+you want to install:
+sudo apt-get install imagemagick
+the 'convert' utlity is part of the older package.
+
